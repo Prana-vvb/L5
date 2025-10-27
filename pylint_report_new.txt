@@ -1,0 +1,22 @@
+************* Module inventory_system
+inventory_system.py:31:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:37:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:46:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:57:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:61:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:67:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:71:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:74:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:76:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:89:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+inventory_system.py:91:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:93:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:97:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:106:17: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+inventory_system.py:108:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:110:12: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+inventory_system.py:129:16: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+
+------------------------------------------------------------------
+Your code has been rated at 8.25/10 (previous run: 4.80/10, +3.45)
+
