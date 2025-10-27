@@ -11,6 +11,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+
 class Inventory:
     """Encapsulates all inventory logic and state."""
 
@@ -27,12 +28,14 @@ class Inventory:
         Handles type checking for quantity.
         """
         if not isinstance(item, (str, int)):
-            logger.warning(f"Item name '{item}' is not a string or int. Skipping.")
+            logger.warning(
+                f"Item name '{item}' is not a string or int. Skipping.")
             return
         try:
             qty_val = int(qty)
         except (ValueError, TypeError):
-            logger.error(f"Invalid quantity '{qty}' for item '{item}'. Must be an integer.")
+            logger.error(f"Invalid quantity '{qty}' for item '{
+                         item}'. Must be an integer.")
             return
 
         if not item:
@@ -40,7 +43,8 @@ class Inventory:
 
         self.stock_data[item] = self.stock_data.get(item, 0) + qty_val
         self.logs.append(f"{str(datetime.now())}: Added {qty_val} of {item}")
-        logger.info(f"Added {qty_val} of {item}. New total: {self.stock_data[item]}")
+        logger.info(f"Added {qty_val} of {item}. New total: {
+                    self.stock_data[item]}")
 
     def remove_item(self, item, qty):
         """
@@ -50,22 +54,27 @@ class Inventory:
         try:
             qty_val = int(qty)
             if qty_val <= 0:
-                logger.warning(f"Quantity to remove must be positive: {qty_val}")
+                logger.warning(
+                    f"Quantity to remove must be positive: {qty_val}")
                 return
         except (ValueError, TypeError):
-            logger.error(f"Invalid quantity '{qty}' for item '{item}'. Skipping.")
+            logger.error(f"Invalid quantity '{
+                         qty}' for item '{item}'. Skipping.")
             return
 
         try:
             self.stock_data[item] -= qty_val
-            logger.info(f"Removed {qty_val} of {item}. New total: {self.stock_data.get(item)}")
+            logger.info(f"Removed {qty_val} of {item}. New total: {
+                        self.stock_data.get(item)}")
             if self.stock_data[item] <= 0:
                 del self.stock_data[item]
-                logger.info(f"Item '{item}' removed from stock as quantity is zero or less.")
+                logger.info(
+                    f"Item '{item}' removed from stock as quantity is zero or less.")
         except KeyError:
             logger.exception(f"Failed to remove item '{item}'. Not in stock.")
         except TypeError:
-            logger.error(f"Data error for item '{item}'. Cannot perform subtraction.")
+            logger.error(f"Data error for item '{
+                         item}'. Cannot perform subtraction.")
 
     def get_qty(self, item):
         """Get quantity of a specific item, defaulting to 0."""
@@ -81,10 +90,12 @@ class Inventory:
                 self.stock_data = json.load(f)
                 logger.info(f"Successfully loaded data from {self.stock_file}")
         except FileNotFoundError:
-            logger.warning(f"{self.stock_file} not found. Starting with empty inventory.")
+            logger.warning(
+                f"{self.stock_file} not found. Starting with empty inventory.")
             self.stock_data = {}
         except json.JSONDecodeError:
-            logger.error(f"Error decoding JSON from {self.stock_file}. Starting with empty inventory.")
+            logger.error(f"Error decoding JSON from {
+                         self.stock_file}. Starting with empty inventory.")
             self.stock_data = {}
 
     def save_data(self):
@@ -115,8 +126,10 @@ class Inventory:
                 if int(qty) < threshold:
                     result.append(i)
             except (ValueError, TypeError):
-                 logger.warning(f"Item '{i}' has non-numeric quantity '{qty}'. Skipping in low-item check.")
+                logger.warning(
+                    f"Item '{i}' has non-numeric quantity '{qty}'. Skipping in low-item check.")
         return result
+
 
 def main():
     """Main function to demonstrate Inventory class."""
