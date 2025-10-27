@@ -1,13 +1,21 @@
+"""Simple inventory management"""
 import ast
 import json
 import logging
 from datetime import datetime
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+logger = logging.getLogger(__name__)
+
 # Global variable
 stock_data = {}
 
 def add_item(item="default", qty=0, logs=None):
-    if logs == None:
+    if logs is None:
         logs = []
 
     if not item:
@@ -21,7 +29,7 @@ def remove_item(item, qty):
         if stock_data[item] <= 0:
             del stock_data[item]
     except KeyError:
-        print("KeyError: Item not found")
+        logger.exception(f"Failed to remove item '{item}'.")
 
 def get_qty(item):
     return stock_data[item]
